@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "amazingApp",
-    "slug": "amazingApp",
+    "name": "loveCalculator",
+    "slug": "loveCalculator",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#6aefd8"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,17 +16,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.jagan.loveCalculator",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+        "backgroundColor": "#6aefd8"
+      },
+      "package": "com.jagan.loveCalculator",
+      "versionCode": 1
     }
   }
 }
