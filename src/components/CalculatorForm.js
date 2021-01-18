@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 import { IconButton, Colors, Button } from 'react-native-paper';
 import { getResult } from '../services/service';
@@ -22,8 +22,8 @@ const CalculatorForm = (props) => {
             console.log('res: ', res.data)
             setResult(res.data)
             setLoader(false);
-            setFname('')
-            setSname('')
+            // setFname('')
+            // setSname('')
         })
         .catch(err=>{
             console.log('err', err)
@@ -31,9 +31,31 @@ const CalculatorForm = (props) => {
         })
     }
 
+    useEffect(() => {
+        return () => {
+            cleanup()
+        }
+    },[])
+
+    const cleanup = () => {
+        setResult({})
+        setFname('')
+        setSname('')
+        setLoader(false)
+    }
     return (
         <View style={styles.cont}>
-            <Text style={styles.label_txt}>Your Name</Text>
+            <Text style={styles.label_txt}>
+                Your Name
+                { result && result.percentage &&
+                <IconButton
+                    icon="notification-clear-all"
+                    animated={true}
+                    color={Colors.red500}
+                    size={20}
+                    onPress={cleanup}
+                />}
+            </Text>
             <Input 
                 label=""
                 value={fname}
@@ -52,11 +74,12 @@ const CalculatorForm = (props) => {
             />
 
             <Button
-                icon="camera"
+                icon={{ uri: 'https://i.imgur.com/98P1j6s.jpg'}}
                 color="#ff009e"
                 mode="contained"
                 uppercase={false}
                 labelStyle={{fontSize: 20}}
+                loading={loader}
                 style={styles.calc_btn}
                 disabled={!fname || !sname}
                 onPress={handleCalculate}
@@ -64,7 +87,7 @@ const CalculatorForm = (props) => {
                 Calculate
             </Button>
             <View>
-                {loader && <CircularLoader size="large" />}
+                {/* {loader && <CircularLoader size="large" />} */}
                 {!loader && result && result.percentage && <ResultPage data={result} />}
             </View>
         </View>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Avatar, Button } from 'react-native-paper';
 
 const ResultPage = (props) => {
@@ -8,8 +8,10 @@ const ResultPage = (props) => {
             <Button
             icon={{ uri: 'https://i.imgur.com/98P1j6s.jpg'}}
             color="#ff009e"
+            labelStyle={{fontSize: 25}}
+            style={styles.btn_txt}
             >
-                {props && props.data && props.data.percentage} %
+                <Text style={{fontSize:20}}>{props && props.data && props.data.percentage} %</Text>
             </Button>
 
         </View>
@@ -17,3 +19,8 @@ const ResultPage = (props) => {
 }
 
 export default ResultPage;
+
+const styles = StyleSheet.create({
+    btn_txt: {
+    }
+})

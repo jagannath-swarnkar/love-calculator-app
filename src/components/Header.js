@@ -14,6 +14,7 @@ const Header = (props) => {
   return (
     <Appbar.Header style={styles.head_cont}>
       {backArrow && <Appbar.BackAction onPress={_goBack} />}
+      {!backArrow && <Appbar.Action icon={{ uri: 'https://i.imgur.com/98P1j6s.jpg'}} style={{padding:0, margin: 0}} />}
       <Appbar.Content title="Love Calculator" subtitle="" />
       {/* <Appbar.Action icon="magnify" onPress={_handleSearch} /> */}
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
